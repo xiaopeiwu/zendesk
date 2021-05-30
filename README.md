@@ -14,7 +14,7 @@ This script was written in Python 3.8 and tested on macOS Linux. Ideally it shou
 `python zendesk.py search --data users --field _id --value 11`  
 `python zendesk.py search -d tickets -f via -v web`   
 `python zendesk.py search -d organizations -f tags -v "Rhode Island"`   
-5. To search for empty values, the `-v` option can be empty or be omitted.
+5. To search for empty values, the `-v` option can be be omitted or be an empty string `""`.
 6. To list all searchable fields for a specific dataset, use the `fields` command. You can specify a dataset to list the fields, or the command will list fields for all datasets by default. For example:  
 `python zendesk.py fields` (will list fields for all datasets)  
 `python zendesk.py fields -d users` (will list fields for users)  
@@ -33,7 +33,7 @@ This script was written in Python 3.8 and tested on macOS Linux. Ideally it shou
 
 ## Sample outputs
 ### Sample user search
-- command used: `zendesk % python zendesk.py search -d users -f _id --value 13`
+- command used: `python zendesk.py search -d users -f _id --value 13`
 ```
 Loading data...
 
@@ -163,6 +163,76 @@ Tickets:
   - A Problem in Saint Kitts and Nevis  (Id: a7b16a5c-76d9-4e60-aadc-33653b828173)
   - A Catastrophe in Netherlands Antilles  (Id: 7ef6cf9f-121d-41e7-832c-68d811da9379)
 ```
+
+### When searching empty fields
+- command used: `python zendesk.py search -d users -f email`
+```
+Loading data...
+
+Tickets data loaded from data/tickets.json
+Users data loaded from data/users.json
+Organizations data loaded from data/organizations.json
+
+Searching users for email with the value empty...
+
+Found 2 result(s):
+
+Id:                   11
+Name:                 Shelly Clements
+Alias:                Miss Campos
+Signature:            Don't Worry Be Happy!
+Email:                
+Phone:                9494-882-401
+Time zone:            Moldova
+Locale:               zh-CN
+Organization:         Plasmos
+Organization Id:      103
+Role:                 agent
+URL:                  http://initech.zendesk.com/api/v2/users/11.json
+External Id:          f844d39b-1d2c-4908-8719-48b5930bc6a2
+Tags:                 Camptown, Glenville, Harleigh, Tedrow
+Active:               True
+Verified:             True
+Shared:               True
+Suspended:            False
+Created at:           Fri, 10 Jun 2016  6:50 AM UTC-10:00
+Last login at:        Sun, 28 Feb 2016  4:06 AM UTC-11:00
+Submitted tickets:    
+  - A Nuisance in Comoros  (Id: 6d6dbb5b-2b74-46a9-8e0a-8d8140f63412)
+Assigned tickets:     
+  - A Nuisance in Saint Lucia  (Id: cb304286-7064-4509-813e-edc36d57623d)
+
+
+Id:                   19
+Name:                 Francis Rodrigüez
+Alias:                Mr Lea
+Signature:            Don't Worry Be Happy!
+Email:                
+Phone:                8275-873-442
+Time zone:            Brazil
+Locale:               zh-CN
+Organization:         Bitrex
+Organization Id:      124
+Role:                 agent
+URL:                  http://initech.zendesk.com/api/v2/users/19.json
+External Id:          68e35e26-7b1f-46ec-a9e5-3edcbcf2aeb9
+Tags:                 Vicksburg, Kilbourne, Gorham, Gloucester
+Active:               False
+Verified:             False
+Shared:               False
+Suspended:            False
+Created at:           Thu, 05 May 2016  1:56 AM UTC-10:00
+Last login at:        Fri, 25 May 2012  1:55 AM UTC-10:00
+Submitted tickets:    
+  - A Problem in Zaire  (Id: 6f2eca87-8425-40f5-b12c-6745039d12f6)
+  - A Nuisance in Togo  (Id: 916aab4a-0577-40cf-8f56-a45912a6ac23)
+Assigned tickets:     
+  - A Nuisance in Kiribati  (Id: fc5a8a70-3814-4b17-a6e9-583936fca909)
+  - A Catastrophe in Iran  (Id: 0f823d66-7e6e-4867-949f-1308a25ab2b0)
+  - A Catastrophe in Belarus  (Id: e23bf143-c5a3-4482-aff4-67df77f87d24)
+  - A Drama in Martinique  (Id: ea69e0c0-d1b8-462e-a654-b571666e6253)
+```
+
 
 ### When no results are found
 - command used: `python zendesk.py search -d users -f name -v "Roger Federer"`
