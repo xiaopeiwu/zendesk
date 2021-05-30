@@ -1,6 +1,7 @@
 # Zendesk ML Eng Coding Challenge 2021  
-This is a simple command line tool to search for Zendesk data and return readable results, written in Python 3. it is my solution to the Zendesk ML Eng coding challenge.  
-This script should be run using Python 3 in a Unix/Linux environment.
+This is a simple Python command line tool to search for Zendesk data and return readable results. It is my solution to the Zendesk ML Eng coding challenge.  
+  
+This script was written in Python 3.8 and tested on macOS Linux. Ideally it should be run using Python 3.6+ in a Unix/Linux environment.
 ## Usage
 1. Clone the repo  
 2. Create a virtual env using Python 3. From your project directory, run  
