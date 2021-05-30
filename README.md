@@ -10,7 +10,7 @@ This script was written in Python 3.8 and tested on macOS Linux. Ideally it shou
    `source ./zendesk/bin/activate`
 3. Install required packages using:  
 `pip install -r requirements.txt`
-4. To search, use the `search` command. Specify a dataset to search on, a field to search for, and a value to search with, using the options `-d` `-f` and `-v` respectively. When the `-v` field is more than 1 word long, put it in double quotation marks. For example:  
+4. To search, use the `search` command. Specify a dataset to search on, a field to search for, and a value to search with, using the options `-d` `-f` and `-v` respectively. When the `-v` option contains whitespace, put it in quotation marks. For example:  
 `python zendesk.py search --data users --field _id --value 11`  
 `python zendesk.py search -d tickets -f via -v web`   
 `python zendesk.py search -d organizations -f tags -v "Rhode Island"`   
@@ -34,7 +34,8 @@ This script was written in Python 3.8 and tested on macOS Linux. Ideally it shou
 ## Sample outputs
 ### Sample user search
 - command used: `zendesk % python zendesk.py search -d users -f _id --value 13`
-```Loading data...
+```
+Loading data...
 
 Tickets data loaded from data/tickets.json
 Users data loaded from data/users.json
@@ -73,6 +74,162 @@ Assigned tickets:
   - A Drama in Germany  (Id: 774765fe-7123-4131-8822-e855d3cad14c)
   - A Nuisance in Namibia  (Id: 50f3fdbd-f8a6-481d-9bf7-572972856628)
 ```
-## Sample ticket search
-- command used: ``
+### Sample ticket search
+- command used: `python zendesk.py search -d tickets -f assignee_id -v 29`
+```
+Loading data...
 
+Tickets data loaded from data/tickets.json
+Users data loaded from data/users.json
+Organizations data loaded from data/organizations.json
+
+Searching tickets for assignee_id with the value 29...
+
+Found 2 result(s):
+
+Id:                   6aac0369-a7e5-4417-8b50-92528ef485d3
+Subject:              A Nuisance in Latvia
+Priority:             urgent
+Status:               hold
+Description:          Laboris laborum culpa sit culpa minim ad laborum Lorem laboris aliqua tempor. Aliqua sit nisi deserunt eu quis ipsum incididunt aute excepteur cillum.
+Organization name:    Noralex
+Organization Id:      113
+URL:                  http://initech.zendesk.com/api/v2/tickets/6aac0369-a7e5-4417-8b50-92528ef485d3.json
+External Id:          0c2ba6c6-ea9a-4a58-ada4-bc72f3b9ff39
+Tags:                 Washington, Wyoming, Ohio, Pennsylvania
+Created at:           Wed, 15 Jun 2016 12:03 PM UTC-10:00
+Due at:               Tue, 16 Aug 2016  5:52 AM UTC-10:00
+Has incidents:        False
+Via:                  chat
+Submitter:            Daniel Agüilar (Id: 50)
+Assignee:             Herrera Norman (Id: 29)
+
+
+Id:                   ffe688cd-402f-4e37-8597-88b3811bbf46
+Subject:              A Problem in Vatican City Ştate (Holy See)
+Priority:             urgent
+Status:               open
+Description:          Ullamco enim id proident cillum tempor fugiat consequat non enim ad. Consectetur nostrud consequat deserunt consequat sit deserunt cillum esse eu ut fugiat.
+Organization name:    Xylar
+Organization Id:      104
+URL:                  http://initech.zendesk.com/api/v2/tickets/ffe688cd-402f-4e37-8597-88b3811bbf46.json
+External Id:          a264d753-d2c3-4f50-ba8f-299bf8070f67
+Tags:                 District Of Columbia, Wisconsin, Illinois, Fédératéd Statés Of Micronésia
+Created at:           Wed, 03 Feb 2016  5:47 AM UTC-11:00
+Due at:               Sat, 06 Aug 2016  7:28 AM UTC-10:00
+Has incidents:        False
+Via:                  web
+Submitter:            John Floyd (Id: 44)
+Assignee:             Herrera Norman (Id: 29)
+```
+
+### Sample organization search
+- command used: `python zendesk.py search -d organizations -f name -v Bitrex` 
+```
+Loading data...
+
+Tickets data loaded from data/tickets.json
+Users data loaded from data/users.json
+Organizations data loaded from data/organizations.json
+
+Searching organizations for name with the value Bitrex...
+
+Found 1 result(s):
+
+Id:                124
+Name:              Bitrex
+Details:           Non profit
+URL:               http://initech.zendesk.com/api/v2/organizations/124.json
+External Id:       15c21605-cbc6-440f-8da2-6e1601aed5fa
+Tags:              Lott, Hunter, Beasley, Glass
+Domain names:      unisure.com, boink.com, quinex.com, poochies.com
+Created at:        Wed, 11 May 2016 12:16 PM UTC-10:00
+Shared tickets:    True
+Users:             
+  - Francis Rodrigüez (Id: 19)
+  - Russo Vincent (Id: 22)
+  - Jennifer Gaines (Id: 39)
+  - Harper Sandoval (Id: 45)
+  - Spence Tate (Id: 54)
+Tickets:           
+  - A Nuisance in Egypt  (Id: 01731a8f-7c00-40ca-94a1-6b874abd1d17)
+  - A Drama in Georgia  (Id: 31ec2df9-edaf-496e-b05a-ca6a75ddcc67)
+  - A Drama in Germany  (Id: 774765fe-7123-4131-8822-e855d3cad14c)
+  - A Catastrophe in Sierra Leone  (Id: 8ea53283-5b36-4328-9a78-f261ee90f44b)
+  - A Catastrophe in Central African Republic  (Id: 5315f036-2bdd-4d6e-a356-fc6759c74351)
+  - A Catastrophe in Belize  (Id: ba4feaec-47ac-483f-bc3d-2604f797e6f0)
+  - A Problem in Marshall Islands  (Id: 9216c7b3-9a7b-40cb-8f96-56fca79520eb)
+  - A Catastrophe in Tuvalu  (Id: 10378588-afec-443e-a0a5-6c707eb1c2e4)
+  - A Problem in Saint Kitts and Nevis  (Id: a7b16a5c-76d9-4e60-aadc-33653b828173)
+  - A Catastrophe in Netherlands Antilles  (Id: 7ef6cf9f-121d-41e7-832c-68d811da9379)
+```
+
+### When no results are found
+- command used: `python zendesk.py search -d users -f name -v "Roger Federer"`
+```
+Loading data...
+
+Tickets data loaded from data/tickets.json
+Users data loaded from data/users.json
+Organizations data loaded from data/organizations.json
+
+Searching users for name with the value Roger Federer...
+
+Sorry, no results found for this search.
+```
+
+### When the field provided is not valid for the specified dataset
+- command used: `python zendesk.py search -d users -f id -v 11`
+```
+Loading data...
+
+Tickets data loaded from data/tickets.json
+Users data loaded from data/users.json
+Organizations data loaded from data/organizations.json
+
+Searching users for id with the value 11...
+
+'id' is not a valid field for users.
+You can search users with one of the below fields:
+organization_id
+created_at
+active
+tags
+signature
+suspended
+timezone
+phone
+alias
+shared
+_id
+url
+locale
+name
+email
+last_login_at
+verified
+role
+external_id
+```
+
+### Listing searchable fields
+- command used: `python zendesk.py fields -d organizations`
+```
+You can search tickets with one of the below fields:
+url
+description
+external_id
+_id
+subject
+has_incidents
+type
+assignee_id
+tags
+via
+status
+due_at
+priority
+submitter_id
+created_at
+organization_id
+```
