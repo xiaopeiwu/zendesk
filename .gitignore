@@ -1,4 +1,6 @@
 .idea/
-.py38/
-.py38/**
+py38/**
 .DS_Store
+report.html
+assets/
+.pytest_cache/

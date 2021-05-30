@@ -20,7 +20,10 @@ This script was written in Python 3.8 and tested on macOS Linux. Ideally it shou
 `python zendesk.py fields -d users` (will list fields for users)  
 7. Use the `--help` option to see the help docs when needed.  
 `python zendesk.py` or `python zendesk.py --help` (will show the main help doc)  
-`python zendesk.py [search|fields] --help` (will show the help docs for each command)   
+`python zendesk.py [search|fields] --help` (will show the help docs for each command)
+8. To run the included tests, use the below command from the project directory:  
+`python -m pytest tests --html=report.html`  
+   This will generate a detailed test report that can be viewed in a browser.
    
 ## Assumptions  
 - The `_id` field of all entities are not empty and unique.
