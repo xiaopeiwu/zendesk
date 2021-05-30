@@ -213,7 +213,7 @@ external_id
 ```
 
 ### Listing searchable fields
-- command used: `python zendesk.py fields -d organizations`
+- command used: `python zendesk.py fields -d tickets`
 ```
 You can search tickets with one of the below fields:
 url
