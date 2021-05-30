@@ -1,6 +1,6 @@
-from entities.user import User
-from entities.ticket import Ticket
-from entities.organization import Organization
+from .entities.user import User
+from .entities.ticket import Ticket
+from .entities.organization import Organization
 
 
 class Matcher:
@@ -22,25 +22,25 @@ class Matcher:
             return self.orgs
 
     def get_entity_data_by_field_value(self):
-        if self.match_field not in self.match_data.all_fields:
-            return []
-        else:
-            results = []
-            all_values = []
-            for i, ent in enumerate(self.match_data.data):
-                curr_value = ent.get(self.match_field, "")
-                all_values.append((i, curr_value))
-            for ind, val in all_values:
-                if type(val) is list:
-                    if self._is_value_in_array(val):
-                        results.append(self.match_data.data[ind])
-                if type(val) is bool:
-                    if self._does_value_match_case_insensitive(val):
-                        results.append(self.match_data.data[ind])
-                else:
-                    if str(self.match_value) == str(val):
-                        results.append(self.match_data.data[ind])
-            return results
+        results = []
+        all_values = []
+        for i, ent in enumerate(self.match_data.data):
+            curr_value = ent.get(self.match_field, "")
+            all_values.append((i, curr_value))
+        for ind, val in all_values:
+            if type(val) is list:
+                if self._is_value_in_array(val):
+                    results.append(self.match_data.data[ind])
+            if type(val) is bool:
+                if self._does_value_match_case_insensitive(val):
+                    results.append(self.match_data.data[ind])
+            else:
+                if str(self.match_value) == str(val):
+                    results.append(self.match_data.data[ind])
+        return results
+
+    def check_if_field_is_searchable(self):
+        return True if self.match_field in self.match_data.all_fields else False
 
     def _does_value_match_case_insensitive(self, val):
         if str(self.match_value).lower() == str(val).lower():

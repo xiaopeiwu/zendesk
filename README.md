@@ -3,19 +3,19 @@ This is a simple Python command line tool to search for Zendesk data and return 
   
 This script was written in Python 3.8 and tested on macOS Linux. Ideally it should be run using Python 3.6+ in a Unix/Linux environment.
 ## Usage
-1. Clone the repo  
-2. Create a virtual env using Python 3. From your project directory, run  
+1. Clone the repo;  
+2. Create a virtual environment using Python 3. From your project directory, run:  
 `virtualenv --python=<path_to_your_python3> zendesk`  
-   and activate the virtual env with  
+   and activate the virtual env with:  
    `source ./zendesk/bin/activate`
-3. Install required packages using  
+3. Install required packages using:  
 `pip install -r requirements.txt`
-4. To search, use the `search` command. Specify a dataset to search on, a field to search for, and a value to search with using options. For example:  
+4. To search, use the `search` command. Specify a dataset to search on, a field to search for, and a value to search with, using the options `-d` `-f` and `-v` respectively. For example:  
 `python zendesk.py search --data users --field _id --value 11`  
 `python zendesk.py search -d tickets -f via -v web`   
 `python zendesk.py search -d organizations -f name -v Bitrex`   
-5. To search for empty values, the `--value` option can be omitted.
-6. To list all searchable fields for a specific dataset, use the `fields` command. You can specify a dataset to list the fields, or the command will list fields for all datasets by default. For example:
+5. To search for empty values, the `-v` option can be empty or be omitted.
+6. To list all searchable fields for a specific dataset, use the `fields` command. You can specify a dataset to list the fields, or the command will list fields for all datasets by default. For example:  
 `python zendesk.py fields` (will list fields for all datasets)  
 `python zendesk.py fields -d users` (will list fields for users)  
 7. Use the `--help` option to see the help docs when needed.  

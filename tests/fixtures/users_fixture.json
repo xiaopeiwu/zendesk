@@ -1,0 +1,79 @@
+[
+  {
+    "_id": 11,
+    "url": "http://initech.zendesk.com/api/v2/users/11.json",
+    "external_id": "f844d39b-1d2c-4908-8719-48b5930bc6a2",
+    "name": "Shelly Clements",
+    "alias": "Miss Campos",
+    "created_at": "2016-06-10T06:50:13 -10:00",
+    "active": true,
+    "verified": true,
+    "shared": true,
+    "locale": "zh-CN",
+    "timezone": "Moldova",
+    "last_login_at": "2016-02-28T04:06:24 -11:00",
+    "phone": "9494-882-401",
+    "signature": "Don't Worry Be Happy!",
+    "organization_id": 124,
+    "tags": [
+      "Camptown",
+      "Glenville",
+      "Harleigh",
+      "Tedrow"
+    ],
+    "suspended": false,
+    "role": "agent"
+  },
+  {
+    "_id": 12,
+    "url": "http://initech.zendesk.com/api/v2/users/12.json",
+    "external_id": "38899b1e-89ca-43e7-b039-e3c88525f0d2",
+    "name": "Watkins Hammond",
+    "alias": "Mr Sally",
+    "created_at": "2016-07-21T12:26:16 -10:00",
+    "active": false,
+    "verified": false,
+    "shared": false,
+    "locale": "en-AU",
+    "timezone": "United Kingdom",
+    "last_login_at": "2012-12-29T07:59:56 -11:00",
+    "email": "sallyhammond@flotonic.com",
+    "phone": "8144-293-283",
+    "signature": "Don't Worry Be Happy!",
+    "organization_id": 125,
+    "tags": [
+      "Bonanza",
+      "Balm",
+      "Fulford",
+      "Austinburg"
+    ],
+    "suspended": false,
+    "role": "end-user"
+  },
+  {
+    "_id": 13,
+    "url": "http://initech.zendesk.com/api/v2/users/13.json",
+    "external_id": "dce36d80-f143-4b1e-8a2e-47651e367a4e",
+    "name": "Wade Moore",
+    "alias": "Mr Vera",
+    "created_at": "2016-06-02T01:11:48 -10:00",
+    "active": true,
+    "verified": true,
+    "shared": false,
+    "locale": "en-AU",
+    "timezone": "Saudi Arabia",
+    "last_login_at": "2012-08-03T05:09:18 -10:00",
+    "email": "veramoore@flotonic.com",
+    "phone": "8395-652-590",
+    "signature": "Don't Worry Be Happy!",
+    "organization_id": 123,
+    "tags": [
+      "Bartonsville",
+      "Frystown",
+      "Sparkill",
+      "Dola"
+    ],
+    "suspended": true,
+    "role": "end-user"
+  }
+]

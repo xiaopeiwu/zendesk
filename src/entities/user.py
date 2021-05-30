@@ -1,4 +1,4 @@
-from entities.utilities import format_timestamp
+from .utilities import format_timestamp
 
 
 class User:

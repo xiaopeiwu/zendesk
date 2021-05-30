@@ -1,5 +1,5 @@
-from entity_container import EntityContainer
-from matcher import Matcher
+from .entity_container import EntityContainer
+from .matcher import Matcher
 
 
 class Conductor:
@@ -30,9 +30,13 @@ class Conductor:
     def match(self):
         matcher = Matcher(self.OrgContainer, self.TicketContainer, self.UserContainer,
                           self.searching_on, self.search_field, self.search_value)
-        original_results = matcher.get_entity_data_by_field_value()
-        self.results = matcher.get_associated_entity_data(original_results)
-        return self.results
+        matchable = matcher.check_if_field_is_searchable()
+        if matchable:
+            original_results = matcher.get_entity_data_by_field_value()
+            self.results = matcher.get_associated_entity_data(original_results)
+            return self.results
+        else:
+            return None
 
     def print_results(self, padding=5):
         for result in self.results:
@@ -47,38 +51,38 @@ class Conductor:
         if dataset == "all":
             self.load_all_data()
             user_fields = self.UserContainer.all_fields
-            print("You can search users with the below fields:")
+            print("You can search users with one of the below fields:")
             for field in user_fields:
                 print(field)
             print("\n")
             org_fields = self.OrgContainer.all_fields
-            print("You can search organizations with the below fields:")
+            print("You can search organizations with one of the below fields:")
             for field in org_fields:
                 print(field)
             print("\n")
             ticket_fields = self.TicketContainer.all_fields
-            print("You can search tickets with the below fields:")
+            print("You can search tickets with one of the below fields:")
             for field in ticket_fields:
                 print(field)
 
         elif dataset == "users":
             self._load_user_data()
             user_fields = self.UserContainer.all_fields
-            print("You can search users with the below fields:")
+            print("You can search users with one of the below fields:")
             for field in user_fields:
                 print(field)
 
         elif dataset == "tickets":
             self._load_ticket_data()
             ticket_fields = self.TicketContainer.all_fields
-            print("You can search tickets with the below fields:")
+            print("You can search tickets with one of the below fields:")
             for field in ticket_fields:
                 print(field)
 
         elif dataset == "organizations":
             self._load_ticket_data()
             ticket_fields = self.TicketContainer.all_fields
-            print("You can search tickets with the below fields:")
+            print("You can search tickets with one of the below fields:")
             for field in ticket_fields:
                 print(field)
 

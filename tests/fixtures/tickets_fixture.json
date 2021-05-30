@@ -1,0 +1,69 @@
+[
+  {
+    "_id": "e68d8bfd-9826-42fd-9692-add445aa7430",
+    "url": "http://initech.zendesk.com/api/v2/tickets/e68d8bfd-9826-42fd-9692-add445aa7430.json",
+    "external_id": "82c58b0f-9958-4af6-b17c-5c23185ef0f9",
+    "created_at": "2016-06-30T06:59:04 -10:00",
+    "type": "question",
+    "subject": "A Catastrophe in Falkland Islands (Malvinas)",
+    "description": "Aute eiusmod nostrud cillum fugiat labore nulla laborum excepteur nostrud eiusmod. Sunt eu irure fugiat nulla cupidatat dolore anim dolore.",
+    "priority": "normal",
+    "status": "pending",
+    "submitter_id": 11,
+    "tags": [
+      "Georgia",
+      "Tennessee",
+      "Mississippi",
+      "Marshall Islands"
+    ],
+    "has_incidents": false,
+    "due_at": "2016-08-13T02:51:04 -10:00",
+    "via": "voice"
+  },
+  {
+    "_id": "be0f613a-e7f7-4833-9342-643b0d9b9fca",
+    "url": "http://initech.zendesk.com/api/v2/tickets/be0f613a-e7f7-4833-9342-643b0d9b9fca.json",
+    "external_id": "bd668495-dfd1-4d47-a68d-364d5176753a",
+    "created_at": "2016-03-13T10:19:40 -11:00",
+    "type": "problem",
+    "subject": "A Drama in Cayman Islands",
+    "description": "Anim anim exercitation magna esse minim labore reprehenderit. Veniam elit magna excepteur deserunt et labore non aliqua sunt quis.",
+    "priority": "normal",
+    "status": "solved",
+    "submitter_id": 12,
+    "assignee_id": 13,
+    "organization_id": 123,
+    "tags": [
+      "South Dakota",
+      "Montana",
+      "District Of Columbia",
+      "Wisconsin"
+    ],
+    "has_incidents": true,
+    "due_at": "2016-08-11T03:56:39 -10:00",
+    "via": "web"
+  },
+  {
+    "_id": "f3cc4dc6-3517-474b-b212-b82fdaa0800d",
+    "url": "http://initech.zendesk.com/api/v2/tickets/f3cc4dc6-3517-474b-b212-b82fdaa0800d.json",
+    "external_id": "ac0adb5d-f270-456d-87a3-8e5fa7c6f34f",
+    "created_at": "2016-02-04T04:52:04 -11:00",
+    "type": "task",
+    "subject": "A Catastrophe in Laos",
+    "description": "Sunt ea do eu quis aliqua et ex ex aliquip amet excepteur est ipsum minim. Irure Lorem excepteur Lorem ullamco ea enim fugiat magna mollit.",
+    "priority": "high",
+    "status": "closed",
+    "submitter_id": 11,
+    "assignee_id": 13,
+    "organization_id": 123,
+    "tags": [
+      "Illinois",
+      "Fédératéd Statés Of Micronésia",
+      "Rhode Island",
+      "Kansas"
+    ],
+    "has_incidents": true,
+    "due_at": "2016-07-30T12:31:51 -10:00",
+    "via": "voice"
+  }
+]

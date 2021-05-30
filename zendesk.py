@@ -1,4 +1,4 @@
-from conductor import Conductor
+from src.conductor import Conductor
 import click
 
 FILE_PATHS = {
@@ -32,12 +32,16 @@ def search(data, field, value):
 
     display_value = value if value else "empty"
     click.echo(f"Searching {data} for {field} with the value {display_value}...\n")
-    results = zendesk_search.match()
-    if results:
-        click.echo(f"Found {len(results)} result(s):\n")
-        zendesk_search.print_results()
+    result = zendesk_search.match()
+    if result is None:
+        click.echo(f"'{field}' is not a valid field for {data}.")
+        zendesk_search.list_searchable_fields(data)
     else:
-        click.echo(f"Sorry, no results found for this search.")
+        if result:
+            click.echo(f"Found {len(result)} result(s):\n")
+            zendesk_search.print_results()
+        else:
+            click.echo(f"Sorry, no results found for this search.")
 
 
 @click.command()
