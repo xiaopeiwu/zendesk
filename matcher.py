@@ -31,15 +31,34 @@ class Matcher:
                 curr_value = ent.get(self.match_field, "")
                 all_values.append((i, curr_value))
             for ind, val in all_values:
-                if self.match_value == val:
-                    results.append(self.match_data.data[ind])
+                if type(val) is list:
+                    if self._is_value_in_array(val):
+                        results.append(self.match_data.data[ind])
+                if type(val) is bool:
+                    if self._does_value_match_case_insensitive(val):
+                        results.append(self.match_data.data[ind])
+                else:
+                    if str(self.match_value) == str(val):
+                        results.append(self.match_data.data[ind])
             return results
 
-    def get_user_by_id(self, user_id):   # assume user id is unique
+    def _does_value_match_case_insensitive(self, val):
+        if str(self.match_value).lower() == str(val).lower():
+            return True
+        else:
+            return False
+
+    def _is_value_in_array(self, array):
+        if self.match_value in array:
+            return True
+        else:
+            return False
+
+    def _get_user_by_id(self, user_id):   # assume user id is unique
         user = next((user for user in self.users.data if user["_id"] == user_id), None)
         return user
 
-    def get_org_by_id(self, org_id):   # assume org id is unique
+    def _get_org_by_id(self, org_id):   # assume org id is unique
         org = next((org for org in self.orgs.data if org["_id"] == org_id), None)
         return org
 
@@ -47,16 +66,16 @@ class Matcher:
         associated_results = []
         if self.searching_on == "users":
             for user in results:
-                user_org = self.get_org_by_id(user["organization_id"]) if user.get("organization_id") else None
+                user_org = self._get_org_by_id(user["organization_id"]) if user.get("organization_id") else None
                 submitted_tickets = [ticket for ticket in self.tickets.data if ticket.get("submitter_id") == user["_id"]]
                 assigned_tickets = [ticket for ticket in self.tickets.data if ticket.get("assignee_id") == user["_id"]]
                 user_obj = User(user, self.users.all_fields, user_org, submitted_tickets, assigned_tickets)
                 associated_results.append(user_obj)
         elif self.searching_on == "tickets":
             for ticket in results:
-                ticket_submitter = self.get_user_by_id(ticket.get("submitter_id"))
-                ticket_assignee = self.get_user_by_id(ticket.get("assignee_id"))
-                ticket_org = self.get_org_by_id(ticket.get("organization_id"))
+                ticket_submitter = self._get_user_by_id(ticket.get("submitter_id"))
+                ticket_assignee = self._get_user_by_id(ticket.get("assignee_id"))
+                ticket_org = self._get_org_by_id(ticket.get("organization_id"))
                 ticket_obj = Ticket(ticket, self.tickets.all_fields, ticket_submitter, ticket_assignee, ticket_org)
                 associated_results.append(ticket_obj)
         elif self.searching_on == "organizations":
